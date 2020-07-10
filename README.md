@@ -1,5 +1,5 @@
 # JK4Life
-#### A launcher and patcher for Jedi Knight / Mysteries of the Sith
+#### A launcher and [patcher](https://github.com/OCircles/JK4Life/wiki/Assembly-Patches) for Jedi Knight / Mysteries of the Sith
 
 In it's current state this is very barebones, but I wanted to put it out anyway just so people could get access to the assembly patches that you can do with this. There's a lot more to be added, so stay tuned for that! For now I'll keep it somewhat mysterious, but trust me it'll be super cool ;)
 
