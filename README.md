@@ -1,10 +1,9 @@
 # JK4Life
 #### A launcher and patcher for Jedi Knight / Mysteries of the Sith
 
-In it's current state this is a very barebones launcher for Jedi Knight and Mysteries of the Sith, but I wanted to put it out anyway just so people could get access to the assembly patches that you can do with this. There's a lot more to be added, so stay tuned for that!
+In it's current state this is very barebones, but I wanted to put it out anyway just so people could get access to the assembly patches that you can do with this. There's a lot more to be added, so stay tuned for that! For now I'll keep it somewhat mysterious, but trust me it'll be super cool ;)
 
-Right now all it does is launching mods and doing assembly patches, but I have a lot more planned. For now I'll keep it somewhat mysterious, but trust me it'll be super cool ;)
-
+#### PS: The patching is never done on your original file, it makes a copy
 
 ---
 
