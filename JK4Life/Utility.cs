@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,11 +11,53 @@ namespace JK4Life
     class Utility
     {
 
+        // Unfortunately this is needed because JK's argument handler is dumb and doesn't know how to handle quotes
+        // So -path argument becomes broken when you have a space in ur mod folder path. Needs the no-spaces shortened path
+        [DllImport("kernel32.dll", CharSet = CharSet.Auto)]
+        public static extern int GetShortPathName(
+            [MarshalAs(UnmanagedType.LPTStr)]
+                    string path,
+            [MarshalAs(UnmanagedType.LPTStr)]
+                    StringBuilder shortPath,
+            int shortPathLength
+        );
+
+        public static string ShortPath(string path)
+        {
+            StringBuilder shortPath = new StringBuilder(255);
+            GetShortPathName(path, shortPath, shortPath.Capacity);
+            return shortPath.ToString();
+        }
         public static string GetReadableVersion()
         {
             // Returns major + minor version of assembly (example: 1.0)
             string[] version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString().Split('.');
             return version[0] + '.' + version[1];
+        }
+
+
+
+
+        public static void CopyDirectory(string strSource, string strDestination)
+        {
+            if (!Directory.Exists(strDestination))
+            {
+                Directory.CreateDirectory(strDestination);
+            }
+
+            DirectoryInfo dirInfo = new DirectoryInfo(strSource);
+            FileInfo[] files = dirInfo.GetFiles();
+            foreach (FileInfo tempfile in files)
+            {
+                tempfile.CopyTo(Path.Combine(strDestination, tempfile.Name));
+            }
+
+            DirectoryInfo[] directories = dirInfo.GetDirectories();
+            foreach (DirectoryInfo tempdir in directories)
+            {
+                CopyDirectory(Path.Combine(strSource, tempdir.Name), Path.Combine(strDestination, tempdir.Name));
+            }
+
         }
 
 
